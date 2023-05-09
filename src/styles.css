@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.main-container {
+  width: 550px;
+  height: 550px;
+  background-color: #e7e6e6;
+}
+
+.header {
+  height: 65px;
+  background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.header-image {
+  height: 50%;
+  margin-left: 20px;
+}
+
+.header-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: white;
+  margin-left: 8px;
+}
+
+.header-lesson {
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  margin-left: 145px;
+}
