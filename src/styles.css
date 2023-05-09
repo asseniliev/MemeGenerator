@@ -62,9 +62,10 @@ body {
 
 .meme-input-field {
   width: 14.38rem;
-  font-size: 0.75rem;
+  font-size: 0.80rem;
   padding-left: 0.69rem;
   border: 1px solid #D5D4D8;
+  font-family: "Karla", sans-serif;
   color: black;
   border-radius: 0.32rem;
 }
@@ -73,11 +74,16 @@ body {
   margin-top: 1rem;
   width: 30rem;
   height: 40px;
-  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  background: linear-gradient(90deg, #711F8D 30.14%, #A818DA 100%);
   border-radius: 5px;
   border: none;
+  font-family: "Karla", sans-serif;
   color: white;
-  font-size: 1rem;
+  font-size: 0.95rem;
   letter-spacing: -0.06rem;
   font-weight: 700;
+}
+
+.meme-button:active {
+  transform: translateY(2px);
 }
