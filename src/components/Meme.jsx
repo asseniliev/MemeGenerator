@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import memeData from '../memeData';
 
 export default function Meme() {
 
+  const [url, setUrl] = useState("");
+
   function handleOnClick(array) {
     const index = Math.floor(Math.random() * array.length);
-    console.log(array[index].url);
+    const newUrl = array[index].url;
+    console.log(newUrl);
+    setUrl(newUrl);
   }
 
 
@@ -21,7 +25,11 @@ export default function Meme() {
           placeholder='and take my money'
         />
       </div>
-      <button className="meme-button" onClick={() => handleOnClick(memeData.data.memes)}>Get a new meme image &#129347;</button>
+      <button className="meme-button" onClick={() => handleOnClick(memeData.data.memes)}>
+        Get a new meme image &#129347;
+      </button>
+      <img className="image" src={url} alt="Random meme image" />
+
     </div >
   )
 }
