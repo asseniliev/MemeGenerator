@@ -3,13 +3,26 @@ import memeData from '../memeData';
 
 export default function Meme() {
 
-  const [url, setUrl] = useState("");
+  const [allMemeImages, setAllMemeImages] = useState(memeData.data.memes);
+
+  const [meme, setMeme] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: getRandomUrl(allMemeImages)
+  })
 
   function handleOnClick(array) {
+    setMeme(prevMeme => {
+      return {
+        ...prevMeme,
+        randomImage: getRandomUrl(allMemeImages)
+      }
+    });
+  }
+
+  function getRandomUrl(array) {
     const index = Math.floor(Math.random() * array.length);
-    const newUrl = array[index].url;
-    console.log(newUrl);
-    setUrl(newUrl);
+    return array[index].url;
   }
 
 
@@ -25,10 +38,10 @@ export default function Meme() {
           placeholder='and take my money'
         />
       </div>
-      <button className="meme-button" onClick={() => handleOnClick(memeData.data.memes)}>
+      <button className="meme-button" onClick={() => handleOnClick(allMemeImages)}>
         Get a new meme image &#129347;
       </button>
-      <img className="image" src={url} alt="Random meme image" />
+      <img className="image" src={meme.randomImage} alt="Random meme image" />
 
     </div >
   )
