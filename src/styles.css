@@ -88,9 +88,47 @@ body {
   transform: translateY(2px);
 }
 
+.image-container {
+  position: relative;
+  width: 80%;
+  text-align: center;
+  left: 38%;
+  transform: translateX(-50%);
+  margin: 15px 0;
+  padding: 0 5px;
+  font-family: impact, sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    0 2px 0 #000,
+    2px 0 0 #000,
+    0 -2px 0 #000,
+    -2px 0 0 #000,
+    2px 2px 5px #000;
+}
+
 .image {
   width: 30rem;
-  height: 21.5rem;
+  height: 20rem;
   margin-top: 1rem;
   object-fit: contain;
+}
+
+.image-text {
+  position: absolute;
+  margin-left: 25%
+}
+
+.image-topText {
+  top: 0px;
+}
+
+.image-bottomText {
+  bottom: 0px;
 }
