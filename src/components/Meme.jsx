@@ -1,15 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import memeData from '../memeData';
 
 export default function Meme() {
 
-  const [allMemeImages, setAllMemeImages] = useState(memeData.data.memes);
-
   const [meme, setMeme] = useState({
     "topText": "",
     "bottomText": "",
-    "randomImage": getRandomUrl(allMemeImages)
+    "randomImage": ""
   })
+
+  const [allMemes, setAllMemes] = useState(null)
+
+  // useEffect(() => {
+  //   fetch("https://api.imgflip.com/get_memes")
+  //     .then(response => response.json())
+  //     .then(data =>
+  //       setAllMemes(data.data.memes));
+  // }, []);
+
+  async function fetchImages() {
+    const res = await fetch("https://api.imgflip.com/get_memes");
+    const data = await res.json();
+    setAllMemes(data.data.memes);
+  }
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  useEffect(() => {
+    if (allMemes) {
+      setMeme(prevMeme => {
+        return {
+          ...prevMeme,
+          "randomImage": getRandomUrl(allMemes)
+        }
+      });
+    }
+    //console.log(allMemes);
+
+  }, [allMemes]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -21,14 +51,13 @@ export default function Meme() {
     });
   }
 
-  function handleOnClick(array) {
-    setMeme(prevMeme => {
-      return {
-        "topText": "",
-        "bottomText": "",
-        randomImage: getRandomUrl(allMemeImages)
-      }
-    });
+  function handleOnClick() {
+    setMeme({
+      "topText": "",
+      "bottomText": "",
+      "randomImage": getRandomUrl(allMemes)
+    }
+    );
   }
 
   function getRandomUrl(array) {
@@ -55,7 +84,7 @@ export default function Meme() {
           onChange={handleChange}
         />
       </div>
-      <button className="meme-button" onClick={() => handleOnClick(allMemeImages)}>
+      <button className="meme-button" onClick={() => handleOnClick()}>
         Get a new meme image &#129347;
       </button>
       <div className="image-container">
@@ -66,3 +95,4 @@ export default function Meme() {
     </div >
   )
 }
+
