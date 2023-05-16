@@ -71,14 +71,14 @@ export default function Meme() {
       <div className='meme-input-container'>
         <input
           className='meme-input-field'
-          placeholder='Shut up'
+          placeholder='Enter top text here'
           name="topText"
           value={meme.topText}
           onChange={handleChange}
         />
         <input
           className='meme-input-field'
-          placeholder='and take my money'
+          placeholder='Enter bottom text here'
           name="bottomText"
           value={meme.bottomText}
           onChange={handleChange}
